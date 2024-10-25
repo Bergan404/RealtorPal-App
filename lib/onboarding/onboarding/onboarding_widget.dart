@@ -196,8 +196,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 16.0),
                         child: FFButtonWidget(
-                          onPressed: () {
-                            print('Button pressed ...');
+                          onPressed: () async {
+                            context.goNamed('CreateAccount');
                           },
                           text: 'Sign Up',
                           options: FFButtonOptions(
@@ -212,6 +212,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                             textStyle:
                                 FlutterFlowTheme.of(context).bodyLarge.override(
                                       fontFamily: 'Inter',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
                                       letterSpacing: 0.0,
                                     ),
                             elevation: 0.0,

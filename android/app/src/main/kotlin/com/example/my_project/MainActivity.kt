@@ -1,4 +1,4 @@
-package com.mycompany.realtorpal
+package com.bhgre.realtorpal
 
 import io.flutter.embedding.android.FlutterActivity
 
