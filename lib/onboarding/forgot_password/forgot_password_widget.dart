@@ -133,7 +133,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                   'We will send you an email with a link to reset your password, please enter the email associated with your account below.',
                   style: FlutterFlowTheme.of(context).labelMedium.override(
                         fontFamily: 'Inter',
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        color: FlutterFlowTheme.of(context).primaryText,
                         letterSpacing: 0.0,
                       ),
                 ),
@@ -183,8 +183,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       filled: true,
-                      fillColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
+                      fillColor: FlutterFlowTheme.of(context).primaryBackground,
                       contentPadding: const EdgeInsetsDirectional.fromSTEB(
                           24.0, 24.0, 20.0, 24.0),
                     ),

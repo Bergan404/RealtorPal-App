@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -90,47 +91,38 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                   child: Align(
                                     alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Container(
-                                      width: 150.0,
-                                      height: 150.0,
+                                      width: 70.0,
+                                      height: 70.0,
                                       decoration: const BoxDecoration(
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 20.0,
-                                            color: Color(0x3C959595),
-                                            offset: Offset(
-                                              0.0,
-                                              2.0,
-                                            ),
-                                            spreadRadius: 35.0,
-                                          )
-                                        ],
-                                        shape: BoxShape.circle,
+                                        shape: BoxShape.rectangle,
                                       ),
                                       child: ClipRRect(
                                         borderRadius:
                                             BorderRadius.circular(0.0),
                                         child: SvgPicture.asset(
                                           'assets/images/SVG_Vector.svg',
-                                          width: 179.0,
-                                          height: 200.0,
+                                          width: 106.0,
+                                          height: 160.0,
                                           fit: BoxFit.contain,
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
-                                Text(
-                                  'RealtorPal',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Inter',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        fontSize: 30.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                                Flexible(
+                                  child: Text(
+                                    'RealtorPal',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontSize: 17.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                  ),
                                 ),
                               ],
                             ),
@@ -488,8 +480,20 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                           return;
                                         }
 
+                                        await UsersRecord.collection
+                                            .doc(user.uid)
+                                            .update(createUsersRecordData(
+                                              email: valueOrDefault<String>(
+                                                _model
+                                                    .emailAddressTextController
+                                                    .text,
+                                                'example@gmail.com',
+                                              ),
+                                              createdTime: getCurrentTimestamp,
+                                            ));
+
                                         context.goNamedAuth(
-                                            'HomePage', context.mounted);
+                                            'SetUsername', context.mounted);
                                       },
                                       text: 'Create Account',
                                       options: FFButtonOptions(
@@ -555,7 +559,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                               decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                        .primaryBackground,
                                               ),
                                               alignment: const AlignmentDirectional(
                                                   0.0, 0.0),
@@ -604,7 +608,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                             const EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
+                                            .primaryBackground,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
@@ -660,7 +664,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
+                                                      .primaryBackground,
                                               textStyle: FlutterFlowTheme.of(
                                                       context)
                                                   .titleSmall

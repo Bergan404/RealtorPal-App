@@ -132,20 +132,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                 child: Align(
                                   alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Container(
-                                    width: 150.0,
-                                    height: 150.0,
+                                    width: 120.0,
+                                    height: 120.0,
                                     decoration: const BoxDecoration(
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 20.0,
-                                          color: Color(0x3C959595),
-                                          offset: Offset(
-                                            0.0,
-                                            2.0,
-                                          ),
-                                          spreadRadius: 35.0,
-                                        )
-                                      ],
                                       shape: BoxShape.circle,
                                     ),
                                     child: ClipRRect(
@@ -167,7 +156,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                     .override(
                                       fontFamily: 'Inter',
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
+                                          .primaryText,
                                       fontSize: 30.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,

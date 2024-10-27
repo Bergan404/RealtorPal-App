@@ -153,53 +153,58 @@ class _LoginWidgetState extends State<LoginWidget>
                 width: 100.0,
                 height: 100.0,
                 decoration: const BoxDecoration(),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 150.0,
-                      height: 150.0,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: SvgPicture.asset(
-                          'assets/images/SVG_Vector.svg',
-                          width: 0.0,
-                          height: 2.0,
-                          fit: BoxFit.contain,
+                child: Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        width: 90.0,
+                        height: 90.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16.0),
                         ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: SvgPicture.asset(
+                            'assets/images/SVG_Vector.svg',
+                            width: 0.0,
+                            height: 2.0,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ).animateOnPageLoad(
+                          animationsMap['containerOnPageLoadAnimation']!),
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        child: Text(
+                          'Sign In',
+                          style: FlutterFlowTheme.of(context)
+                              .headlineSmall
+                              .override(
+                                fontFamily: 'Inter Tight',
+                                letterSpacing: 0.0,
+                              ),
+                        ).animateOnPageLoad(
+                            animationsMap['textOnPageLoadAnimation1']!),
                       ),
-                    ).animateOnPageLoad(
-                        animationsMap['containerOnPageLoadAnimation']!),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                      child: Text(
-                        'Sign In',
-                        style:
-                            FlutterFlowTheme.of(context).headlineSmall.override(
-                                  fontFamily: 'Inter Tight',
-                                  letterSpacing: 0.0,
-                                ),
-                      ).animateOnPageLoad(
-                          animationsMap['textOnPageLoadAnimation1']!),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
-                      child: Text(
-                        'Use the account below to sign in.',
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
-                              letterSpacing: 0.0,
-                            ),
-                      ).animateOnPageLoad(
-                          animationsMap['textOnPageLoadAnimation2']!),
-                    ),
-                  ],
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                        child: Text(
+                          'Use the account below to sign in.',
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
+                        ).animateOnPageLoad(
+                            animationsMap['textOnPageLoadAnimation2']!),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -259,8 +264,8 @@ class _LoginWidgetState extends State<LoginWidget>
                               borderRadius: BorderRadius.circular(12.0),
                             ),
                             filled: true,
-                            fillColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
+                            fillColor:
+                                FlutterFlowTheme.of(context).primaryBackground,
                             contentPadding: const EdgeInsets.all(24.0),
                           ),
                           style:
@@ -322,8 +327,8 @@ class _LoginWidgetState extends State<LoginWidget>
                               borderRadius: BorderRadius.circular(12.0),
                             ),
                             filled: true,
-                            fillColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
+                            fillColor:
+                                FlutterFlowTheme.of(context).primaryBackground,
                             contentPadding: const EdgeInsets.all(24.0),
                             suffixIcon: InkWell(
                               onTap: () => safeSetState(
@@ -414,8 +419,8 @@ class _LoginWidgetState extends State<LoginWidget>
                                 0.0, 0.0, 0.0, 0.0),
                             iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
                             textStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
@@ -497,7 +502,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                           const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
+                                          .primaryBackground,
                                       textStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -549,7 +554,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
+                                                .primaryBackground,
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium

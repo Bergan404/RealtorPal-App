@@ -6,3 +6,5 @@ export '/onboarding/create_account/create_account_widget.dart'
 export '/onboarding/forgot_password/forgot_password_widget.dart'
     show ForgotPasswordWidget;
 export '/onboarding/login/login_widget.dart' show LoginWidget;
+export '/onboarding/set_username/set_username_widget.dart'
+    show SetUsernameWidget;
