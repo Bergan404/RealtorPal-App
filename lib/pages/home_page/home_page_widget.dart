@@ -65,7 +65,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   await authManager.signOut();
                   GoRouter.of(context).clearRedirectLocation();
 
-                  context.goNamedAuth('Onboarding', context.mounted);
+                  context.goNamedAuth('LoadedPage', context.mounted);
                 },
                 text: 'Button',
                 options: FFButtonOptions(

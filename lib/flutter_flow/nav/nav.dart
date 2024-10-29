@@ -72,23 +72,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const HomePageWidget() : const OnboardingWidget(),
+          appStateNotifier.loggedIn ? const HomePageWidget() : const LoadedPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const HomePageWidget() : const OnboardingWidget(),
+              appStateNotifier.loggedIn ? const HomePageWidget() : const LoadedPageWidget(),
         ),
         FFRoute(
           name: 'HomePage',
           path: '/homePage',
           builder: (context, params) => const HomePageWidget(),
-        ),
-        FFRoute(
-          name: 'Onboarding',
-          path: '/onboarding',
-          builder: (context, params) => const OnboardingWidget(),
         ),
         FFRoute(
           name: 'CreateAccount',
@@ -109,6 +104,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'SetUsername',
           path: '/setUsername',
           builder: (context, params) => const SetUsernameWidget(),
+        ),
+        FFRoute(
+          name: 'LoadedPage',
+          path: '/loadedPage',
+          builder: (context, params) => const LoadedPageWidget(),
+        ),
+        FFRoute(
+          name: 'GoalOne',
+          path: '/goalOne',
+          builder: (context, params) => const GoalOneWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -279,7 +284,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/onboarding';
+            return '/loadedPage';
           }
           return null;
         },
