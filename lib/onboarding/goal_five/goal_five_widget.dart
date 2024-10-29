@@ -5,28 +5,28 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'goal_one_model.dart';
-export 'goal_one_model.dart';
+import 'goal_five_model.dart';
+export 'goal_five_model.dart';
 
-class GoalOneWidget extends StatefulWidget {
-  const GoalOneWidget({super.key});
+class GoalFiveWidget extends StatefulWidget {
+  const GoalFiveWidget({super.key});
 
   @override
-  State<GoalOneWidget> createState() => _GoalOneWidgetState();
+  State<GoalFiveWidget> createState() => _GoalFiveWidgetState();
 }
 
-class _GoalOneWidgetState extends State<GoalOneWidget> {
-  late GoalOneModel _model;
+class _GoalFiveWidgetState extends State<GoalFiveWidget> {
+  late GoalFiveModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => GoalOneModel());
+    _model = createModel(context, () => GoalFiveModel());
 
-    _model.incomeGoalTextController ??= TextEditingController();
-    _model.incomeGoalFocusNode ??= FocusNode();
+    _model.connectionsTextController ??= TextEditingController();
+    _model.connectionsFocusNode ??= FocusNode();
   }
 
   @override
@@ -60,15 +60,15 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
             ),
           );
         }
-        List<QuestionnaireRecord> goalOneQuestionnaireRecordList =
+        List<QuestionnaireRecord> goalFiveQuestionnaireRecordList =
             snapshot.data!;
         // Return an empty Container when the item does not exist.
         if (snapshot.data!.isEmpty) {
           return Container();
         }
-        final goalOneQuestionnaireRecord =
-            goalOneQuestionnaireRecordList.isNotEmpty
-                ? goalOneQuestionnaireRecordList.first
+        final goalFiveQuestionnaireRecord =
+            goalFiveQuestionnaireRecordList.isNotEmpty
+                ? goalFiveQuestionnaireRecordList.first
                 : null;
 
         return GestureDetector(
@@ -157,8 +157,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 borderColor: Colors.transparent,
                                 borderRadius: 8.0,
                                 buttonSize: 10.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).alternate,
+                                fillColor: FlutterFlowTheme.of(context).primary,
                                 icon: Icon(
                                   Icons.arrow_back,
                                   color: FlutterFlowTheme.of(context).info,
@@ -177,8 +176,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 borderColor: Colors.transparent,
                                 borderRadius: 8.0,
                                 buttonSize: 10.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).alternate,
+                                fillColor: FlutterFlowTheme.of(context).primary,
                                 icon: Icon(
                                   Icons.arrow_back,
                                   color: FlutterFlowTheme.of(context).info,
@@ -197,8 +195,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 borderColor: Colors.transparent,
                                 borderRadius: 8.0,
                                 buttonSize: 10.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).alternate,
+                                fillColor: FlutterFlowTheme.of(context).primary,
                                 icon: Icon(
                                   Icons.arrow_back,
                                   color: FlutterFlowTheme.of(context).info,
@@ -217,8 +214,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 borderColor: Colors.transparent,
                                 borderRadius: 8.0,
                                 buttonSize: 10.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).alternate,
+                                fillColor: FlutterFlowTheme.of(context).primary,
                                 icon: Icon(
                                   Icons.arrow_back,
                                   color: FlutterFlowTheme.of(context).info,
@@ -282,7 +278,8 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'What is your Income Goal?',
+                            'How many people are in your database?',
+                            textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -293,7 +290,8 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 ),
                           ),
                           Text(
-                            'Type what you would like to achieve this year',
+                            'Since you have became a Realtor how many people have you connected with?',
+                            textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -316,10 +314,10 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                           child: SizedBox(
                             width: double.infinity,
                             child: TextFormField(
-                              controller: _model.incomeGoalTextController,
-                              focusNode: _model.incomeGoalFocusNode,
+                              controller: _model.connectionsTextController,
+                              focusNode: _model.connectionsFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.incomeGoalTextController',
+                                '_model.connectionsTextController',
                                 const Duration(milliseconds: 2000),
                                 () => safeSetState(() {}),
                               ),
@@ -327,7 +325,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 isDense: true,
-                                hintText: 'Enter Amount...',
+                                hintText: 'How many connections...',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -366,11 +364,11 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 ),
                                 filled: true,
                                 fillColor: const Color(0xFF666666),
-                                suffixIcon: _model.incomeGoalTextController!
+                                suffixIcon: _model.connectionsTextController!
                                         .text.isNotEmpty
                                     ? InkWell(
                                         onTap: () async {
-                                          _model.incomeGoalTextController
+                                          _model.connectionsTextController
                                               ?.clear();
                                           safeSetState(() {});
                                         },
@@ -391,10 +389,11 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w100,
                                   ),
+                              keyboardType: TextInputType.number,
                               cursorColor:
                                   FlutterFlowTheme.of(context).primaryText,
                               validator: _model
-                                  .incomeGoalTextControllerValidator
+                                  .connectionsTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -403,13 +402,13 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        await goalOneQuestionnaireRecord!.reference
+                        await goalFiveQuestionnaireRecord!.reference
                             .update(createQuestionnaireRecordData(
-                          incomeGoal: int.tryParse(
-                              _model.incomeGoalTextController.text),
+                          connectionsMade: int.tryParse(
+                              _model.connectionsTextController.text),
                         ));
 
-                        context.pushNamed('GoalTwo');
+                        context.pushNamed('GoalSix');
                       },
                       text: 'Next',
                       options: FFButtonOptions(

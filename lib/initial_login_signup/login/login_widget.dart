@@ -228,16 +228,10 @@ class _LoginWidgetState extends State<LoginWidget>
                           autofillHints: const [AutofillHints.email],
                           obscureText: false,
                           decoration: InputDecoration(
-                            labelText: 'Email',
-                            labelStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Inter',
-                                  letterSpacing: 0.0,
-                                ),
+                            hintText: 'Email',
                             enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).alternate,
+                              borderSide: const BorderSide(
+                                color: Color(0xFF3F3F3F),
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.circular(12.0),
@@ -264,13 +258,13 @@ class _LoginWidgetState extends State<LoginWidget>
                               borderRadius: BorderRadius.circular(12.0),
                             ),
                             filled: true,
-                            fillColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            fillColor: const Color(0xFF666666),
                             contentPadding: const EdgeInsets.all(24.0),
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Inter',
+                                    fontSize: 15.0,
                                     letterSpacing: 0.0,
                                   ),
                           keyboardType: TextInputType.emailAddress,
@@ -291,16 +285,10 @@ class _LoginWidgetState extends State<LoginWidget>
                           autofillHints: const [AutofillHints.password],
                           obscureText: !_model.passwordVisibility,
                           decoration: InputDecoration(
-                            labelText: 'Password',
-                            labelStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Inter',
-                                  letterSpacing: 0.0,
-                                ),
+                            hintText: 'Password',
                             enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).alternate,
+                              borderSide: const BorderSide(
+                                color: Color(0xFF3F3F3F),
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.circular(12.0),
@@ -327,8 +315,7 @@ class _LoginWidgetState extends State<LoginWidget>
                               borderRadius: BorderRadius.circular(12.0),
                             ),
                             filled: true,
-                            fillColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            fillColor: const Color(0xFF666666),
                             contentPadding: const EdgeInsets.all(24.0),
                             suffixIcon: InkWell(
                               onTap: () => safeSetState(
@@ -340,15 +327,16 @@ class _LoginWidgetState extends State<LoginWidget>
                                 _model.passwordVisibility
                                     ? Icons.visibility_outlined
                                     : Icons.visibility_off_outlined,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 24.0,
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                size: 22.0,
                               ),
                             ),
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Inter',
+                                    fontSize: 15.0,
                                     letterSpacing: 0.0,
                                   ),
                           validator: _model.passwordTextControllerValidator

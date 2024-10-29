@@ -114,6 +114,36 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'GoalOne',
           path: '/goalOne',
           builder: (context, params) => const GoalOneWidget(),
+        ),
+        FFRoute(
+          name: 'GoalTwo',
+          path: '/goalTwo',
+          builder: (context, params) => const GoalTwoWidget(),
+        ),
+        FFRoute(
+          name: 'GoalThree',
+          path: '/goalThree',
+          builder: (context, params) => const GoalThreeWidget(),
+        ),
+        FFRoute(
+          name: 'GoalFour',
+          path: '/goalFour',
+          builder: (context, params) => const GoalFourWidget(),
+        ),
+        FFRoute(
+          name: 'GoalFive',
+          path: '/goalFive',
+          builder: (context, params) => const GoalFiveWidget(),
+        ),
+        FFRoute(
+          name: 'GoalSix',
+          path: '/goalSix',
+          builder: (context, params) => const GoalSixWidget(),
+        ),
+        FFRoute(
+          name: 'GoalSeven',
+          path: '/goalSeven',
+          builder: (context, params) => const GoalSevenWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

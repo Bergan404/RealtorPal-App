@@ -1,32 +1,30 @@
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:easy_debounce/easy_debounce.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
-import 'goal_one_model.dart';
-export 'goal_one_model.dart';
+import 'goal_seven_model.dart';
+export 'goal_seven_model.dart';
 
-class GoalOneWidget extends StatefulWidget {
-  const GoalOneWidget({super.key});
+class GoalSevenWidget extends StatefulWidget {
+  const GoalSevenWidget({super.key});
 
   @override
-  State<GoalOneWidget> createState() => _GoalOneWidgetState();
+  State<GoalSevenWidget> createState() => _GoalSevenWidgetState();
 }
 
-class _GoalOneWidgetState extends State<GoalOneWidget> {
-  late GoalOneModel _model;
+class _GoalSevenWidgetState extends State<GoalSevenWidget> {
+  late GoalSevenModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => GoalOneModel());
-
-    _model.incomeGoalTextController ??= TextEditingController();
-    _model.incomeGoalFocusNode ??= FocusNode();
+    _model = createModel(context, () => GoalSevenModel());
   }
 
   @override
@@ -60,15 +58,15 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
             ),
           );
         }
-        List<QuestionnaireRecord> goalOneQuestionnaireRecordList =
+        List<QuestionnaireRecord> goalSevenQuestionnaireRecordList =
             snapshot.data!;
         // Return an empty Container when the item does not exist.
         if (snapshot.data!.isEmpty) {
           return Container();
         }
-        final goalOneQuestionnaireRecord =
-            goalOneQuestionnaireRecordList.isNotEmpty
-                ? goalOneQuestionnaireRecordList.first
+        final goalSevenQuestionnaireRecord =
+            goalSevenQuestionnaireRecordList.isNotEmpty
+                ? goalSevenQuestionnaireRecordList.first
                 : null;
 
         return GestureDetector(
@@ -157,8 +155,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 borderColor: Colors.transparent,
                                 borderRadius: 8.0,
                                 buttonSize: 10.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).alternate,
+                                fillColor: FlutterFlowTheme.of(context).primary,
                                 icon: Icon(
                                   Icons.arrow_back,
                                   color: FlutterFlowTheme.of(context).info,
@@ -177,8 +174,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 borderColor: Colors.transparent,
                                 borderRadius: 8.0,
                                 buttonSize: 10.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).alternate,
+                                fillColor: FlutterFlowTheme.of(context).primary,
                                 icon: Icon(
                                   Icons.arrow_back,
                                   color: FlutterFlowTheme.of(context).info,
@@ -197,8 +193,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 borderColor: Colors.transparent,
                                 borderRadius: 8.0,
                                 buttonSize: 10.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).alternate,
+                                fillColor: FlutterFlowTheme.of(context).primary,
                                 icon: Icon(
                                   Icons.arrow_back,
                                   color: FlutterFlowTheme.of(context).info,
@@ -217,8 +212,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 borderColor: Colors.transparent,
                                 borderRadius: 8.0,
                                 buttonSize: 10.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).alternate,
+                                fillColor: FlutterFlowTheme.of(context).primary,
                                 icon: Icon(
                                   Icons.arrow_back,
                                   color: FlutterFlowTheme.of(context).info,
@@ -237,8 +231,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 borderColor: Colors.transparent,
                                 borderRadius: 8.0,
                                 buttonSize: 10.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).alternate,
+                                fillColor: FlutterFlowTheme.of(context).primary,
                                 icon: Icon(
                                   Icons.arrow_back,
                                   color: FlutterFlowTheme.of(context).info,
@@ -257,8 +250,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 borderColor: Colors.transparent,
                                 borderRadius: 8.0,
                                 buttonSize: 10.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).alternate,
+                                fillColor: FlutterFlowTheme.of(context).primary,
                                 icon: Icon(
                                   Icons.arrow_back,
                                   color: FlutterFlowTheme.of(context).info,
@@ -282,7 +274,8 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'What is your Income Goal?',
+                            'What are you comfortable with doing to get business?',
+                            textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -293,7 +286,8 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 ),
                           ),
                           Text(
-                            'Type what you would like to achieve this year',
+                            'Select more than one',
+                            textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -311,105 +305,67 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                         width: double.infinity,
                         height: 100.0,
                         decoration: const BoxDecoration(),
-                        child: Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
-                          child: SizedBox(
-                            width: double.infinity,
-                            child: TextFormField(
-                              controller: _model.incomeGoalTextController,
-                              focusNode: _model.incomeGoalFocusNode,
-                              onChanged: (_) => EasyDebounce.debounce(
-                                '_model.incomeGoalTextController',
-                                const Duration(milliseconds: 2000),
-                                () => safeSetState(() {}),
-                              ),
-                              autofocus: false,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                isDense: true,
-                                hintText: 'Enter Amount...',
-                                hintStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Inter',
-                                      fontSize: 20.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w100,
-                                    ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 0.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 0.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                errorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    width: 0.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    width: 0.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                filled: true,
-                                fillColor: const Color(0xFF666666),
-                                suffixIcon: _model.incomeGoalTextController!
-                                        .text.isNotEmpty
-                                    ? InkWell(
-                                        onTap: () async {
-                                          _model.incomeGoalTextController
-                                              ?.clear();
-                                          safeSetState(() {});
-                                        },
-                                        child: Icon(
-                                          Icons.clear,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
-                                          size: 24.0,
-                                        ),
-                                      )
-                                    : null,
-                              ),
-                              style: FlutterFlowTheme.of(context)
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            FlutterFlowDropDown<String>(
+                              multiSelectController:
+                                  _model.dropDownValueController ??=
+                                      FormListFieldController<String>(null),
+                              options: const [
+                                'Videos',
+                                'Social Media Posts',
+                                'Cold Calling',
+                                'Warm Calling',
+                                'Texting',
+                                'Emailing',
+                                'Print Marketing',
+                                'Letters'
+                              ],
+                              width: double.infinity,
+                              height: 50.0,
+                              textStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Inter',
-                                    fontSize: 20.0,
+                                    color: FlutterFlowTheme.of(context).primary,
                                     letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w100,
                                   ),
-                              cursorColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                              validator: _model
-                                  .incomeGoalTextControllerValidator
-                                  .asValidator(context),
+                              hintText: 'Select multiple...',
+                              icon: Icon(
+                                Icons.keyboard_arrow_down_rounded,
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                size: 24.0,
+                              ),
+                              elevation: 2.0,
+                              borderColor:
+                                  FlutterFlowTheme.of(context).tertiary,
+                              borderWidth: 5.0,
+                              borderRadius: 8.0,
+                              margin: const EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 12.0, 12.0, 12.0),
+                              hidesUnderline: true,
+                              isOverButton: false,
+                              isSearchable: false,
+                              isMultiSelect: true,
+                              onMultiSelectChanged: (val) => safeSetState(
+                                  () => _model.dropDownValue = val),
                             ),
-                          ),
+                          ],
                         ),
                       ),
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        await goalOneQuestionnaireRecord!.reference
-                            .update(createQuestionnaireRecordData(
-                          incomeGoal: int.tryParse(
-                              _model.incomeGoalTextController.text),
-                        ));
+                        await goalSevenQuestionnaireRecord!.reference.update({
+                          ...mapToFirestore(
+                            {
+                              'business_names': _model.dropDownValue,
+                            },
+                          ),
+                        });
 
-                        context.pushNamed('GoalTwo');
+                        context.goNamed('HomePage');
                       },
                       text: 'Next',
                       options: FFButtonOptions(

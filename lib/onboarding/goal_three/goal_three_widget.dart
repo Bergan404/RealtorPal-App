@@ -5,28 +5,28 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'goal_one_model.dart';
-export 'goal_one_model.dart';
+import 'goal_three_model.dart';
+export 'goal_three_model.dart';
 
-class GoalOneWidget extends StatefulWidget {
-  const GoalOneWidget({super.key});
+class GoalThreeWidget extends StatefulWidget {
+  const GoalThreeWidget({super.key});
 
   @override
-  State<GoalOneWidget> createState() => _GoalOneWidgetState();
+  State<GoalThreeWidget> createState() => _GoalThreeWidgetState();
 }
 
-class _GoalOneWidgetState extends State<GoalOneWidget> {
-  late GoalOneModel _model;
+class _GoalThreeWidgetState extends State<GoalThreeWidget> {
+  late GoalThreeModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => GoalOneModel());
+    _model = createModel(context, () => GoalThreeModel());
 
-    _model.incomeGoalTextController ??= TextEditingController();
-    _model.incomeGoalFocusNode ??= FocusNode();
+    _model.yearsTextController ??= TextEditingController();
+    _model.yearsFocusNode ??= FocusNode();
   }
 
   @override
@@ -60,15 +60,15 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
             ),
           );
         }
-        List<QuestionnaireRecord> goalOneQuestionnaireRecordList =
+        List<QuestionnaireRecord> goalThreeQuestionnaireRecordList =
             snapshot.data!;
         // Return an empty Container when the item does not exist.
         if (snapshot.data!.isEmpty) {
           return Container();
         }
-        final goalOneQuestionnaireRecord =
-            goalOneQuestionnaireRecordList.isNotEmpty
-                ? goalOneQuestionnaireRecordList.first
+        final goalThreeQuestionnaireRecord =
+            goalThreeQuestionnaireRecordList.isNotEmpty
+                ? goalThreeQuestionnaireRecordList.first
                 : null;
 
         return GestureDetector(
@@ -157,8 +157,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 borderColor: Colors.transparent,
                                 borderRadius: 8.0,
                                 buttonSize: 10.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).alternate,
+                                fillColor: FlutterFlowTheme.of(context).primary,
                                 icon: Icon(
                                   Icons.arrow_back,
                                   color: FlutterFlowTheme.of(context).info,
@@ -177,8 +176,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 borderColor: Colors.transparent,
                                 borderRadius: 8.0,
                                 buttonSize: 10.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).alternate,
+                                fillColor: FlutterFlowTheme.of(context).primary,
                                 icon: Icon(
                                   Icons.arrow_back,
                                   color: FlutterFlowTheme.of(context).info,
@@ -282,7 +280,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'What is your Income Goal?',
+                            'Years of Experience',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -293,7 +291,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 ),
                           ),
                           Text(
-                            'Type what you would like to achieve this year',
+                            'How Many Years of Experience do you have?',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -316,10 +314,10 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                           child: SizedBox(
                             width: double.infinity,
                             child: TextFormField(
-                              controller: _model.incomeGoalTextController,
-                              focusNode: _model.incomeGoalFocusNode,
+                              controller: _model.yearsTextController,
+                              focusNode: _model.yearsFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.incomeGoalTextController',
+                                '_model.yearsTextController',
                                 const Duration(milliseconds: 2000),
                                 () => safeSetState(() {}),
                               ),
@@ -327,7 +325,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 isDense: true,
-                                hintText: 'Enter Amount...',
+                                hintText: 'How many years...',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -366,12 +364,11 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 ),
                                 filled: true,
                                 fillColor: const Color(0xFF666666),
-                                suffixIcon: _model.incomeGoalTextController!
-                                        .text.isNotEmpty
+                                suffixIcon: _model
+                                        .yearsTextController!.text.isNotEmpty
                                     ? InkWell(
                                         onTap: () async {
-                                          _model.incomeGoalTextController
-                                              ?.clear();
+                                          _model.yearsTextController?.clear();
                                           safeSetState(() {});
                                         },
                                         child: Icon(
@@ -391,10 +388,10 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w100,
                                   ),
+                              keyboardType: TextInputType.number,
                               cursorColor:
                                   FlutterFlowTheme.of(context).primaryText,
-                              validator: _model
-                                  .incomeGoalTextControllerValidator
+                              validator: _model.yearsTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -403,13 +400,13 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        await goalOneQuestionnaireRecord!.reference
+                        await goalThreeQuestionnaireRecord!.reference
                             .update(createQuestionnaireRecordData(
-                          incomeGoal: int.tryParse(
-                              _model.incomeGoalTextController.text),
+                          yearsOfExperience:
+                              int.tryParse(_model.yearsTextController.text),
                         ));
 
-                        context.pushNamed('GoalTwo');
+                        context.pushNamed('GoalFour');
                       },
                       text: 'Next',
                       options: FFButtonOptions(

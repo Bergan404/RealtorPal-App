@@ -1,32 +1,30 @@
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:easy_debounce/easy_debounce.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
-import 'goal_one_model.dart';
-export 'goal_one_model.dart';
+import 'goal_six_model.dart';
+export 'goal_six_model.dart';
 
-class GoalOneWidget extends StatefulWidget {
-  const GoalOneWidget({super.key});
+class GoalSixWidget extends StatefulWidget {
+  const GoalSixWidget({super.key});
 
   @override
-  State<GoalOneWidget> createState() => _GoalOneWidgetState();
+  State<GoalSixWidget> createState() => _GoalSixWidgetState();
 }
 
-class _GoalOneWidgetState extends State<GoalOneWidget> {
-  late GoalOneModel _model;
+class _GoalSixWidgetState extends State<GoalSixWidget> {
+  late GoalSixModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => GoalOneModel());
-
-    _model.incomeGoalTextController ??= TextEditingController();
-    _model.incomeGoalFocusNode ??= FocusNode();
+    _model = createModel(context, () => GoalSixModel());
   }
 
   @override
@@ -60,15 +58,15 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
             ),
           );
         }
-        List<QuestionnaireRecord> goalOneQuestionnaireRecordList =
+        List<QuestionnaireRecord> goalSixQuestionnaireRecordList =
             snapshot.data!;
         // Return an empty Container when the item does not exist.
         if (snapshot.data!.isEmpty) {
           return Container();
         }
-        final goalOneQuestionnaireRecord =
-            goalOneQuestionnaireRecordList.isNotEmpty
-                ? goalOneQuestionnaireRecordList.first
+        final goalSixQuestionnaireRecord =
+            goalSixQuestionnaireRecordList.isNotEmpty
+                ? goalSixQuestionnaireRecordList.first
                 : null;
 
         return GestureDetector(
@@ -157,8 +155,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 borderColor: Colors.transparent,
                                 borderRadius: 8.0,
                                 buttonSize: 10.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).alternate,
+                                fillColor: FlutterFlowTheme.of(context).primary,
                                 icon: Icon(
                                   Icons.arrow_back,
                                   color: FlutterFlowTheme.of(context).info,
@@ -177,8 +174,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 borderColor: Colors.transparent,
                                 borderRadius: 8.0,
                                 buttonSize: 10.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).alternate,
+                                fillColor: FlutterFlowTheme.of(context).primary,
                                 icon: Icon(
                                   Icons.arrow_back,
                                   color: FlutterFlowTheme.of(context).info,
@@ -197,8 +193,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 borderColor: Colors.transparent,
                                 borderRadius: 8.0,
                                 buttonSize: 10.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).alternate,
+                                fillColor: FlutterFlowTheme.of(context).primary,
                                 icon: Icon(
                                   Icons.arrow_back,
                                   color: FlutterFlowTheme.of(context).info,
@@ -217,8 +212,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 borderColor: Colors.transparent,
                                 borderRadius: 8.0,
                                 buttonSize: 10.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).alternate,
+                                fillColor: FlutterFlowTheme.of(context).primary,
                                 icon: Icon(
                                   Icons.arrow_back,
                                   color: FlutterFlowTheme.of(context).info,
@@ -237,8 +231,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 borderColor: Colors.transparent,
                                 borderRadius: 8.0,
                                 buttonSize: 10.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).alternate,
+                                fillColor: FlutterFlowTheme.of(context).primary,
                                 icon: Icon(
                                   Icons.arrow_back,
                                   color: FlutterFlowTheme.of(context).info,
@@ -282,7 +275,8 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'What is your Income Goal?',
+                            'Whats your Daily Schedule',
+                            textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -293,7 +287,8 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 ),
                           ),
                           Text(
-                            'Type what you would like to achieve this year',
+                            'What days and hours are you going to work?',
+                            textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -311,105 +306,134 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                         width: double.infinity,
                         height: 100.0,
                         decoration: const BoxDecoration(),
-                        child: Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
-                          child: SizedBox(
-                            width: double.infinity,
-                            child: TextFormField(
-                              controller: _model.incomeGoalTextController,
-                              focusNode: _model.incomeGoalFocusNode,
-                              onChanged: (_) => EasyDebounce.debounce(
-                                '_model.incomeGoalTextController',
-                                const Duration(milliseconds: 2000),
-                                () => safeSetState(() {}),
-                              ),
-                              autofocus: false,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                isDense: true,
-                                hintText: 'Enter Amount...',
-                                hintStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Inter',
-                                      fontSize: 20.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w100,
-                                    ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 0.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  'How many days a week are you going to work',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        fontSize: 15.0,
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 0.0,
+                                FlutterFlowDropDown<String>(
+                                  controller: _model.weekDaysValueController ??=
+                                      FormFieldController<String>(null),
+                                  options: const ['1', '2', '3', '4', '5', '6', '7'],
+                                  onChanged: (val) => safeSetState(
+                                      () => _model.weekDaysValue = val),
+                                  width: double.infinity,
+                                  height: 50.0,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        letterSpacing: 0.0,
+                                      ),
+                                  hintText: 'How many days a week...',
+                                  icon: Icon(
+                                    Icons.keyboard_arrow_down_rounded,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    size: 24.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(8.0),
+                                  elevation: 2.0,
+                                  borderColor:
+                                      FlutterFlowTheme.of(context).tertiary,
+                                  borderWidth: 5.0,
+                                  borderRadius: 8.0,
+                                  margin: const EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 12.0, 12.0, 12.0),
+                                  hidesUnderline: true,
+                                  isOverButton: false,
+                                  isSearchable: false,
+                                  isMultiSelect: false,
                                 ),
-                                errorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    width: 0.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    width: 0.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                filled: true,
-                                fillColor: const Color(0xFF666666),
-                                suffixIcon: _model.incomeGoalTextController!
-                                        .text.isNotEmpty
-                                    ? InkWell(
-                                        onTap: () async {
-                                          _model.incomeGoalTextController
-                                              ?.clear();
-                                          safeSetState(() {});
-                                        },
-                                        child: Icon(
-                                          Icons.clear,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
-                                          size: 24.0,
-                                        ),
-                                      )
-                                    : null,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Inter',
-                                    fontSize: 20.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w100,
-                                  ),
-                              cursorColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                              validator: _model
-                                  .incomeGoalTextControllerValidator
-                                  .asValidator(context),
+                              ].divide(const SizedBox(height: 10.0)),
                             ),
-                          ),
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  'How many hours a day are you going to work',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        fontSize: 15.0,
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                                FlutterFlowDropDown<String>(
+                                  controller: _model.hoursValueController ??=
+                                      FormFieldController<String>(null),
+                                  options: const [
+                                    '1',
+                                    '2',
+                                    '3',
+                                    '4',
+                                    '5',
+                                    '6',
+                                    '7',
+                                    '8'
+                                  ],
+                                  onChanged: (val) => safeSetState(
+                                      () => _model.hoursValue = val),
+                                  width: double.infinity,
+                                  height: 50.0,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        letterSpacing: 0.0,
+                                      ),
+                                  hintText: 'How many hours a day...',
+                                  icon: Icon(
+                                    Icons.keyboard_arrow_down_rounded,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    size: 24.0,
+                                  ),
+                                  elevation: 2.0,
+                                  borderColor:
+                                      FlutterFlowTheme.of(context).tertiary,
+                                  borderWidth: 5.0,
+                                  borderRadius: 8.0,
+                                  margin: const EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 12.0, 12.0, 12.0),
+                                  hidesUnderline: true,
+                                  isOverButton: false,
+                                  isSearchable: false,
+                                  isMultiSelect: false,
+                                ),
+                              ].divide(const SizedBox(height: 10.0)),
+                            ),
+                          ].divide(const SizedBox(height: 24.0)),
                         ),
                       ),
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        await goalOneQuestionnaireRecord!.reference
+                        await goalSixQuestionnaireRecord!.reference
                             .update(createQuestionnaireRecordData(
-                          incomeGoal: int.tryParse(
-                              _model.incomeGoalTextController.text),
+                          daysAWeek: _model.weekDaysValue,
+                          hoursADay: _model.hoursValue,
                         ));
 
-                        context.pushNamed('GoalTwo');
+                        context.pushNamed('GoalSeven');
                       },
                       text: 'Next',
                       options: FFButtonOptions(

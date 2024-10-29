@@ -5,28 +5,28 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'goal_one_model.dart';
-export 'goal_one_model.dart';
+import 'goal_two_model.dart';
+export 'goal_two_model.dart';
 
-class GoalOneWidget extends StatefulWidget {
-  const GoalOneWidget({super.key});
+class GoalTwoWidget extends StatefulWidget {
+  const GoalTwoWidget({super.key});
 
   @override
-  State<GoalOneWidget> createState() => _GoalOneWidgetState();
+  State<GoalTwoWidget> createState() => _GoalTwoWidgetState();
 }
 
-class _GoalOneWidgetState extends State<GoalOneWidget> {
-  late GoalOneModel _model;
+class _GoalTwoWidgetState extends State<GoalTwoWidget> {
+  late GoalTwoModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => GoalOneModel());
+    _model = createModel(context, () => GoalTwoModel());
 
-    _model.incomeGoalTextController ??= TextEditingController();
-    _model.incomeGoalFocusNode ??= FocusNode();
+    _model.locationTextController ??= TextEditingController();
+    _model.locationFocusNode ??= FocusNode();
   }
 
   @override
@@ -60,15 +60,15 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
             ),
           );
         }
-        List<QuestionnaireRecord> goalOneQuestionnaireRecordList =
+        List<QuestionnaireRecord> goalTwoQuestionnaireRecordList =
             snapshot.data!;
         // Return an empty Container when the item does not exist.
         if (snapshot.data!.isEmpty) {
           return Container();
         }
-        final goalOneQuestionnaireRecord =
-            goalOneQuestionnaireRecordList.isNotEmpty
-                ? goalOneQuestionnaireRecordList.first
+        final goalTwoQuestionnaireRecord =
+            goalTwoQuestionnaireRecordList.isNotEmpty
+                ? goalTwoQuestionnaireRecordList.first
                 : null;
 
         return GestureDetector(
@@ -157,8 +157,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 borderColor: Colors.transparent,
                                 borderRadius: 8.0,
                                 buttonSize: 10.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).alternate,
+                                fillColor: FlutterFlowTheme.of(context).primary,
                                 icon: Icon(
                                   Icons.arrow_back,
                                   color: FlutterFlowTheme.of(context).info,
@@ -282,7 +281,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'What is your Income Goal?',
+                            'Location',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -293,7 +292,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 ),
                           ),
                           Text(
-                            'Type what you would like to achieve this year',
+                            'Allow Location In Settings or manually Enter',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -316,10 +315,10 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                           child: SizedBox(
                             width: double.infinity,
                             child: TextFormField(
-                              controller: _model.incomeGoalTextController,
-                              focusNode: _model.incomeGoalFocusNode,
+                              controller: _model.locationTextController,
+                              focusNode: _model.locationFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.incomeGoalTextController',
+                                '_model.locationTextController',
                                 const Duration(milliseconds: 2000),
                                 () => safeSetState(() {}),
                               ),
@@ -327,7 +326,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 isDense: true,
-                                hintText: 'Enter Amount...',
+                                hintText: 'Enter Location...',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -366,11 +365,11 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                 ),
                                 filled: true,
                                 fillColor: const Color(0xFF666666),
-                                suffixIcon: _model.incomeGoalTextController!
-                                        .text.isNotEmpty
+                                suffixIcon: _model
+                                        .locationTextController!.text.isNotEmpty
                                     ? InkWell(
                                         onTap: () async {
-                                          _model.incomeGoalTextController
+                                          _model.locationTextController
                                               ?.clear();
                                           safeSetState(() {});
                                         },
@@ -393,8 +392,7 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                                   ),
                               cursorColor:
                                   FlutterFlowTheme.of(context).primaryText,
-                              validator: _model
-                                  .incomeGoalTextControllerValidator
+                              validator: _model.locationTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -403,13 +401,12 @@ class _GoalOneWidgetState extends State<GoalOneWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        await goalOneQuestionnaireRecord!.reference
+                        await goalTwoQuestionnaireRecord!.reference
                             .update(createQuestionnaireRecordData(
-                          incomeGoal: int.tryParse(
-                              _model.incomeGoalTextController.text),
+                          location: _model.locationTextController.text,
                         ));
 
-                        context.pushNamed('GoalTwo');
+                        context.pushNamed('GoalThree');
                       },
                       text: 'Next',
                       options: FFButtonOptions(
