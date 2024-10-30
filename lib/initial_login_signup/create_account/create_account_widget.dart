@@ -182,18 +182,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText: 'Email',
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelLarge
-                                                  .override(
-                                                    fontFamily: 'Inter',
-                                                    letterSpacing: 0.0,
-                                                  ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBackground,
+                                            borderSide: const BorderSide(
+                                              color: Color(0xFF3F3F3F),
                                               width: 2.0,
                                             ),
                                             borderRadius:
@@ -231,14 +222,14 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                 BorderRadius.circular(12.0),
                                           ),
                                           filled: true,
-                                          fillColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryBackground,
+                                          fillColor: const Color(0xFF666666),
+                                          contentPadding: const EdgeInsets.all(24.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyLarge
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Inter',
+                                              fontSize: 15.0,
                                               letterSpacing: 0.0,
                                             ),
                                         keyboardType:
@@ -263,18 +254,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                         obscureText: !_model.passwordVisibility,
                                         decoration: InputDecoration(
                                           labelText: 'Password',
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelLarge
-                                                  .override(
-                                                    fontFamily: 'Inter',
-                                                    letterSpacing: 0.0,
-                                                  ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBackground,
+                                            borderSide: const BorderSide(
+                                              color: Color(0xFF3F3F3F),
                                               width: 2.0,
                                             ),
                                             borderRadius:
@@ -312,9 +294,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                 BorderRadius.circular(12.0),
                                           ),
                                           filled: true,
-                                          fillColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryBackground,
+                                          fillColor: const Color(0xFF666666),
+                                          contentPadding: const EdgeInsets.all(24.0),
                                           suffixIcon: InkWell(
                                             onTap: () => safeSetState(
                                               () => _model.passwordVisibility =
@@ -329,15 +310,16 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                       .visibility_off_outlined,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24.0,
+                                                      .primaryBackground,
+                                              size: 22.0,
                                             ),
                                           ),
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyLarge
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Inter',
+                                              fontSize: 15.0,
                                               letterSpacing: 0.0,
                                             ),
                                         validator: _model
@@ -362,18 +344,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                             !_model.passwordConfirmVisibility,
                                         decoration: InputDecoration(
                                           labelText: 'Confirm Password',
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelLarge
-                                                  .override(
-                                                    fontFamily: 'Inter',
-                                                    letterSpacing: 0.0,
-                                                  ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBackground,
+                                            borderSide: const BorderSide(
+                                              color: Color(0xFF3F3F3F),
                                               width: 2.0,
                                             ),
                                             borderRadius:
@@ -411,9 +384,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                 BorderRadius.circular(12.0),
                                           ),
                                           filled: true,
-                                          fillColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryBackground,
+                                          fillColor: const Color(0xFF666666),
+                                          contentPadding: const EdgeInsets.all(24.0),
                                           suffixIcon: InkWell(
                                             onTap: () => safeSetState(
                                               () => _model
@@ -430,18 +402,18 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                       .visibility_off_outlined,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24.0,
+                                                      .primaryBackground,
+                                              size: 22.0,
                                             ),
                                           ),
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyLarge
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Inter',
+                                              fontSize: 15.0,
                                               letterSpacing: 0.0,
                                             ),
-                                        minLines: 1,
                                         validator: _model
                                             .passwordConfirmTextControllerValidator
                                             .asValidator(context),
