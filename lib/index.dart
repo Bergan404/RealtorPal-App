@@ -16,3 +16,4 @@ export '/onboarding/goal_four/goal_four_widget.dart' show GoalFourWidget;
 export '/onboarding/goal_five/goal_five_widget.dart' show GoalFiveWidget;
 export '/onboarding/goal_six/goal_six_widget.dart' show GoalSixWidget;
 export '/onboarding/goal_seven/goal_seven_widget.dart' show GoalSevenWidget;
+export '/onboarding/your_plan/your_plan_widget.dart' show YourPlanWidget;

@@ -224,11 +224,18 @@ class _LoginWidgetState extends State<LoginWidget>
                         child: TextFormField(
                           controller: _model.emailAddressTextController,
                           focusNode: _model.emailAddressFocusNode,
-                          autofocus: true,
+                          autofocus: false,
                           autofillHints: const [AutofillHints.email],
                           obscureText: false,
                           decoration: InputDecoration(
                             hintText: 'Email',
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Inter',
+                                  fontSize: 15.0,
+                                  letterSpacing: 0.0,
+                                ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
                                 color: Color(0xFF3F3F3F),
@@ -286,6 +293,13 @@ class _LoginWidgetState extends State<LoginWidget>
                           obscureText: !_model.passwordVisibility,
                           decoration: InputDecoration(
                             hintText: 'Password',
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Inter',
+                                  fontSize: 15.0,
+                                  letterSpacing: 0.0,
+                                ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
                                 color: Color(0xFF3F3F3F),
@@ -366,8 +380,8 @@ class _LoginWidgetState extends State<LoginWidget>
                           },
                           text: 'Sign In',
                           options: FFButtonOptions(
-                            width: 230.0,
-                            height: 52.0,
+                            width: double.infinity,
+                            height: 44.0,
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             iconPadding: const EdgeInsetsDirectional.fromSTEB(
@@ -401,7 +415,7 @@ class _LoginWidgetState extends State<LoginWidget>
                           },
                           text: 'Forgot Password',
                           options: FFButtonOptions(
-                            width: 230.0,
+                            width: double.infinity,
                             height: 44.0,
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
@@ -413,6 +427,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                 .labelMedium
                                 .override(
                                   fontFamily: 'Inter',
+                                  fontSize: 16.0,
                                   letterSpacing: 0.0,
                                 ),
                             elevation: 0.0,
@@ -426,26 +441,57 @@ class _LoginWidgetState extends State<LoginWidget>
                         ),
                       ),
                     ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: Stack(
+                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          children: [
+                            Align(
+                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 12.0, 0.0, 12.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 2.0,
+                                  decoration: BoxDecoration(
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              child: Container(
+                                width: 70.0,
+                                height: 32.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                ),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                child: Text(
+                                  'OR',
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelLarge
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 24.0),
-                            child: Text(
-                              'Or sign up with',
-                              textAlign: TextAlign.center,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Inter',
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
-                          ),
-                        ),
                         Align(
                           alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Padding(
@@ -482,7 +528,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                       size: 20.0,
                                     ),
                                     options: FFButtonOptions(
-                                      width: 230.0,
+                                      width: double.infinity,
                                       height: 44.0,
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
@@ -495,6 +541,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                           .labelMedium
                                           .override(
                                             fontFamily: 'Inter',
+                                            fontSize: 16.0,
                                             letterSpacing: 0.0,
                                           ),
                                       elevation: 0.0,
@@ -533,7 +580,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                             size: 20.0,
                                           ),
                                           options: FFButtonOptions(
-                                            width: 230.0,
+                                            width: double.infinity,
                                             height: 44.0,
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
@@ -548,6 +595,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                     .labelMedium
                                                     .override(
                                                       fontFamily: 'Inter',
+                                                      fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                     ),
                                             elevation: 0.0,
@@ -570,6 +618,53 @@ class _LoginWidgetState extends State<LoginWidget>
                           ),
                         ),
                       ],
+                    ),
+
+                    // You will have to add an action on this rich text to go to your login page.
+                    Align(
+                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            0.0, 12.0, 0.0, 12.0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.goNamed('CreateAccount');
+                          },
+                          child: RichText(
+                            textScaler: MediaQuery.of(context).textScaler,
+                            text: TextSpan(
+                              children: [
+                                const TextSpan(
+                                  text: 'Dont have a account?',
+                                  style: TextStyle(),
+                                ),
+                                TextSpan(
+                                  text: ' Sign up here',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                )
+                              ],
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ).animateOnPageLoad(

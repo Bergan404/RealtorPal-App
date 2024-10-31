@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -36,8 +37,9 @@ class _GoalSevenWidgetState extends State<GoalSevenWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<QuestionnaireRecord>>(
-      stream: queryQuestionnaireRecord(
+    return StreamBuilder<List<PlansRecord>>(
+      stream: queryPlansRecord(
+        parent: currentUserReference,
         singleRecord: true,
       ),
       builder: (context, snapshot) {
@@ -58,16 +60,14 @@ class _GoalSevenWidgetState extends State<GoalSevenWidget> {
             ),
           );
         }
-        List<QuestionnaireRecord> goalSevenQuestionnaireRecordList =
-            snapshot.data!;
+        List<PlansRecord> goalSevenPlansRecordList = snapshot.data!;
         // Return an empty Container when the item does not exist.
         if (snapshot.data!.isEmpty) {
           return Container();
         }
-        final goalSevenQuestionnaireRecord =
-            goalSevenQuestionnaireRecordList.isNotEmpty
-                ? goalSevenQuestionnaireRecordList.first
-                : null;
+        final goalSevenPlansRecord = goalSevenPlansRecordList.isNotEmpty
+            ? goalSevenPlansRecordList.first
+            : null;
 
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -357,15 +357,15 @@ class _GoalSevenWidgetState extends State<GoalSevenWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        await goalSevenQuestionnaireRecord!.reference.update({
+                        await goalSevenPlansRecord!.reference.update({
                           ...mapToFirestore(
                             {
-                              'business_names': _model.dropDownValue,
+                              'comfort_level': _model.dropDownValue,
                             },
                           ),
                         });
 
-                        context.goNamed('HomePage');
+                        context.goNamed('YourPlan');
                       },
                       text: 'Next',
                       options: FFButtonOptions(

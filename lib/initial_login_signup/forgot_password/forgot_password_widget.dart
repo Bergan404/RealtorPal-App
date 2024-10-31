@@ -148,6 +148,12 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                     obscureText: false,
                     decoration: InputDecoration(
                       hintText: 'Enter your email...',
+                      hintStyle:
+                          FlutterFlowTheme.of(context).bodyMedium.override(
+                                fontFamily: 'Inter',
+                                fontSize: 15.0,
+                                letterSpacing: 0.0,
+                              ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: Color(0xFF3F3F3F),

@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -38,8 +39,9 @@ class _GoalThreeWidgetState extends State<GoalThreeWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<QuestionnaireRecord>>(
-      stream: queryQuestionnaireRecord(
+    return StreamBuilder<List<PlansRecord>>(
+      stream: queryPlansRecord(
+        parent: currentUserReference,
         singleRecord: true,
       ),
       builder: (context, snapshot) {
@@ -60,16 +62,14 @@ class _GoalThreeWidgetState extends State<GoalThreeWidget> {
             ),
           );
         }
-        List<QuestionnaireRecord> goalThreeQuestionnaireRecordList =
-            snapshot.data!;
+        List<PlansRecord> goalThreePlansRecordList = snapshot.data!;
         // Return an empty Container when the item does not exist.
         if (snapshot.data!.isEmpty) {
           return Container();
         }
-        final goalThreeQuestionnaireRecord =
-            goalThreeQuestionnaireRecordList.isNotEmpty
-                ? goalThreeQuestionnaireRecordList.first
-                : null;
+        final goalThreePlansRecord = goalThreePlansRecordList.isNotEmpty
+            ? goalThreePlansRecordList.first
+            : null;
 
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -400,8 +400,8 @@ class _GoalThreeWidgetState extends State<GoalThreeWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        await goalThreeQuestionnaireRecord!.reference
-                            .update(createQuestionnaireRecordData(
+                        await goalThreePlansRecord!.reference
+                            .update(createPlansRecordData(
                           yearsOfExperience:
                               int.tryParse(_model.yearsTextController.text),
                         ));

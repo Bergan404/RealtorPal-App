@@ -144,6 +144,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'GoalSeven',
           path: '/goalSeven',
           builder: (context, params) => const GoalSevenWidget(),
+        ),
+        FFRoute(
+          name: 'YourPlan',
+          path: '/yourPlan',
+          builder: (context, params) => const YourPlanWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

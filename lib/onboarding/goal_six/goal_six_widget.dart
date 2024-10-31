@@ -1,4 +1,6 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_checkbox_group.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -36,8 +38,9 @@ class _GoalSixWidgetState extends State<GoalSixWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<QuestionnaireRecord>>(
-      stream: queryQuestionnaireRecord(
+    return StreamBuilder<List<PlansRecord>>(
+      stream: queryPlansRecord(
+        parent: currentUserReference,
         singleRecord: true,
       ),
       builder: (context, snapshot) {
@@ -58,16 +61,14 @@ class _GoalSixWidgetState extends State<GoalSixWidget> {
             ),
           );
         }
-        List<QuestionnaireRecord> goalSixQuestionnaireRecordList =
-            snapshot.data!;
+        List<PlansRecord> goalSixPlansRecordList = snapshot.data!;
         // Return an empty Container when the item does not exist.
         if (snapshot.data!.isEmpty) {
           return Container();
         }
-        final goalSixQuestionnaireRecord =
-            goalSixQuestionnaireRecordList.isNotEmpty
-                ? goalSixQuestionnaireRecordList.first
-                : null;
+        final goalSixPlansRecord = goalSixPlansRecordList.isNotEmpty
+            ? goalSixPlansRecordList.first
+            : null;
 
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -313,53 +314,43 @@ class _GoalSixWidgetState extends State<GoalSixWidget> {
                             Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Text(
-                                  'How many days a week are you going to work',
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Inter',
-                                        fontSize: 15.0,
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                                FlutterFlowDropDown<String>(
-                                  controller: _model.weekDaysValueController ??=
-                                      FormFieldController<String>(null),
-                                  options: const ['1', '2', '3', '4', '5', '6', '7'],
+                                FlutterFlowCheckboxGroup(
+                                  options: const [
+                                    'Monday',
+                                    'Tuesday',
+                                    'Wednesday',
+                                    'Thursday',
+                                    'Friday',
+                                    'Saturday',
+                                    'Sunday'
+                                  ],
                                   onChanged: (val) => safeSetState(
-                                      () => _model.weekDaysValue = val),
-                                  width: double.infinity,
-                                  height: 50.0,
+                                      () => _model.checkboxGroupValues = val),
+                                  controller:
+                                      _model.checkboxGroupValueController ??=
+                                          FormFieldController<List<String>>(
+                                    [],
+                                  ),
+                                  activeColor:
+                                      FlutterFlowTheme.of(context).primary,
+                                  checkColor: FlutterFlowTheme.of(context).info,
+                                  checkboxBorderColor:
+                                      FlutterFlowTheme.of(context)
+                                          .secondaryText,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Inter',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
+                                        fontSize: 16.0,
                                         letterSpacing: 0.0,
                                       ),
-                                  hintText: 'How many days a week...',
-                                  icon: Icon(
-                                    Icons.keyboard_arrow_down_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                    size: 24.0,
-                                  ),
-                                  elevation: 2.0,
-                                  borderColor:
-                                      FlutterFlowTheme.of(context).tertiary,
-                                  borderWidth: 5.0,
-                                  borderRadius: 8.0,
-                                  margin: const EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 12.0, 12.0, 12.0),
-                                  hidesUnderline: true,
-                                  isOverButton: false,
-                                  isSearchable: false,
-                                  isMultiSelect: false,
+                                  itemPadding: const EdgeInsets.all(6.0),
+                                  checkboxBorderRadius:
+                                      BorderRadius.circular(4.0),
+                                  initialized:
+                                      _model.checkboxGroupValues != null,
                                 ),
-                              ].divide(const SizedBox(height: 10.0)),
+                              ],
                             ),
                             Column(
                               mainAxisSize: MainAxisSize.max,
@@ -407,6 +398,8 @@ class _GoalSixWidgetState extends State<GoalSixWidget> {
                                         .primaryBackground,
                                     size: 24.0,
                                   ),
+                                  fillColor:
+                                      FlutterFlowTheme.of(context).secondary,
                                   elevation: 2.0,
                                   borderColor:
                                       FlutterFlowTheme.of(context).tertiary,
@@ -427,11 +420,18 @@ class _GoalSixWidgetState extends State<GoalSixWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        await goalSixQuestionnaireRecord!.reference
-                            .update(createQuestionnaireRecordData(
-                          daysAWeek: _model.weekDaysValue,
-                          hoursADay: _model.hoursValue,
-                        ));
+                        await goalSixPlansRecord!.reference.update({
+                          ...createPlansRecordData(
+                            daysAWeek:
+                                _model.checkboxGroupValues?.length.toString(),
+                            hoursADay: _model.hoursValue,
+                          ),
+                          ...mapToFirestore(
+                            {
+                              'what_days': _model.checkboxGroupValues,
+                            },
+                          ),
+                        });
 
                         context.pushNamed('GoalSeven');
                       },

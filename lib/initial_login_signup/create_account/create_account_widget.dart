@@ -137,7 +137,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                           child: Align(
                             alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsets.all(24.0),
+                              padding: const EdgeInsets.all(16.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -177,11 +177,19 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                         controller:
                                             _model.emailAddressTextController,
                                         focusNode: _model.emailAddressFocusNode,
-                                        autofocus: true,
+                                        autofocus: false,
                                         autofillHints: const [AutofillHints.email],
                                         obscureText: false,
                                         decoration: InputDecoration(
-                                          labelText: 'Email',
+                                          hintText: 'Email',
+                                          hintStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Inter',
+                                                    fontSize: 15.0,
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: const BorderSide(
                                               color: Color(0xFF3F3F3F),
@@ -249,11 +257,19 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                         controller:
                                             _model.passwordTextController,
                                         focusNode: _model.passwordFocusNode,
-                                        autofocus: true,
+                                        autofocus: false,
                                         autofillHints: const [AutofillHints.password],
                                         obscureText: !_model.passwordVisibility,
                                         decoration: InputDecoration(
-                                          labelText: 'Password',
+                                          hintText: 'Password',
+                                          hintStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Inter',
+                                                    fontSize: 15.0,
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: const BorderSide(
                                               color: Color(0xFF3F3F3F),
@@ -338,12 +354,20 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                             .passwordConfirmTextController,
                                         focusNode:
                                             _model.passwordConfirmFocusNode,
-                                        autofocus: true,
+                                        autofocus: false,
                                         autofillHints: const [AutofillHints.password],
                                         obscureText:
                                             !_model.passwordConfirmVisibility,
                                         decoration: InputDecoration(
-                                          labelText: 'Confirm Password',
+                                          hintText: 'Confirm Password',
+                                          hintStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Inter',
+                                                    fontSize: 15.0,
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: const BorderSide(
                                               color: Color(0xFF3F3F3F),

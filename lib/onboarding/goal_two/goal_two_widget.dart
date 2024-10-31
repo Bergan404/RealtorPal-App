@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -38,8 +39,9 @@ class _GoalTwoWidgetState extends State<GoalTwoWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<QuestionnaireRecord>>(
-      stream: queryQuestionnaireRecord(
+    return StreamBuilder<List<PlansRecord>>(
+      stream: queryPlansRecord(
+        parent: currentUserReference,
         singleRecord: true,
       ),
       builder: (context, snapshot) {
@@ -60,16 +62,14 @@ class _GoalTwoWidgetState extends State<GoalTwoWidget> {
             ),
           );
         }
-        List<QuestionnaireRecord> goalTwoQuestionnaireRecordList =
-            snapshot.data!;
+        List<PlansRecord> goalTwoPlansRecordList = snapshot.data!;
         // Return an empty Container when the item does not exist.
         if (snapshot.data!.isEmpty) {
           return Container();
         }
-        final goalTwoQuestionnaireRecord =
-            goalTwoQuestionnaireRecordList.isNotEmpty
-                ? goalTwoQuestionnaireRecordList.first
-                : null;
+        final goalTwoPlansRecord = goalTwoPlansRecordList.isNotEmpty
+            ? goalTwoPlansRecordList.first
+            : null;
 
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -401,8 +401,8 @@ class _GoalTwoWidgetState extends State<GoalTwoWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        await goalTwoQuestionnaireRecord!.reference
-                            .update(createQuestionnaireRecordData(
+                        await goalTwoPlansRecord!.reference
+                            .update(createPlansRecordData(
                           location: _model.locationTextController.text,
                         ));
 

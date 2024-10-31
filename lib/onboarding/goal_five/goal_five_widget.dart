@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -38,8 +39,9 @@ class _GoalFiveWidgetState extends State<GoalFiveWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<QuestionnaireRecord>>(
-      stream: queryQuestionnaireRecord(
+    return StreamBuilder<List<PlansRecord>>(
+      stream: queryPlansRecord(
+        parent: currentUserReference,
         singleRecord: true,
       ),
       builder: (context, snapshot) {
@@ -60,16 +62,14 @@ class _GoalFiveWidgetState extends State<GoalFiveWidget> {
             ),
           );
         }
-        List<QuestionnaireRecord> goalFiveQuestionnaireRecordList =
-            snapshot.data!;
+        List<PlansRecord> goalFivePlansRecordList = snapshot.data!;
         // Return an empty Container when the item does not exist.
         if (snapshot.data!.isEmpty) {
           return Container();
         }
-        final goalFiveQuestionnaireRecord =
-            goalFiveQuestionnaireRecordList.isNotEmpty
-                ? goalFiveQuestionnaireRecordList.first
-                : null;
+        final goalFivePlansRecord = goalFivePlansRecordList.isNotEmpty
+            ? goalFivePlansRecordList.first
+            : null;
 
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -402,8 +402,8 @@ class _GoalFiveWidgetState extends State<GoalFiveWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        await goalFiveQuestionnaireRecord!.reference
-                            .update(createQuestionnaireRecordData(
+                        await goalFivePlansRecord!.reference
+                            .update(createPlansRecordData(
                           connectionsMade: int.tryParse(
                               _model.connectionsTextController.text),
                         ));

@@ -27,8 +27,11 @@ class _SetUsernameWidgetState extends State<SetUsernameWidget> {
     super.initState();
     _model = createModel(context, () => SetUsernameModel());
 
-    _model.textController ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
+    _model.userNameTextController ??= TextEditingController();
+    _model.userNameFocusNode ??= FocusNode();
+
+    _model.phoneNumberTextController ??= TextEditingController();
+    _model.phoneNumberFocusNode ??= FocusNode();
   }
 
   @override
@@ -152,8 +155,8 @@ class _SetUsernameWidgetState extends State<SetUsernameWidget> {
                           alignment: const AlignmentDirectional(-1.0, 1.0),
                           children: [
                             Container(
-                              width: 100.0,
-                              height: 100.0,
+                              width: 150.0,
+                              height: 150.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .primaryBackground,
@@ -186,60 +189,121 @@ class _SetUsernameWidgetState extends State<SetUsernameWidget> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: TextFormField(
-                            controller: _model.textController,
-                            focusNode: _model.textFieldFocusNode,
-                            autofocus: false,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              hintText: 'Username',
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Color(0xFF3F3F3F),
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                              filled: true,
-                              fillColor: const Color(0xFF666666),
-                              contentPadding: const EdgeInsets.all(24.0),
-                            ),
-                            style: FlutterFlowTheme.of(context)
+                      SizedBox(
+                        width: double.infinity,
+                        child: TextFormField(
+                          controller: _model.userNameTextController,
+                          focusNode: _model.userNameFocusNode,
+                          autofocus: false,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            hintText: 'Username',
+                            hintStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Inter',
                                   fontSize: 15.0,
                                   letterSpacing: 0.0,
                                 ),
-                            validator: _model.textControllerValidator
-                                .asValidator(context),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Color(0xFF3F3F3F),
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            filled: true,
+                            fillColor: const Color(0xFF666666),
+                            contentPadding: const EdgeInsets.all(24.0),
                           ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Inter',
+                                    fontSize: 15.0,
+                                    letterSpacing: 0.0,
+                                  ),
+                          validator: _model.userNameTextControllerValidator
+                              .asValidator(context),
+                        ),
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        child: TextFormField(
+                          controller: _model.phoneNumberTextController,
+                          focusNode: _model.phoneNumberFocusNode,
+                          autofocus: false,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            hintText: 'Phone',
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Inter',
+                                  fontSize: 15.0,
+                                  letterSpacing: 0.0,
+                                ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Color(0xFF3F3F3F),
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            filled: true,
+                            fillColor: const Color(0xFF666666),
+                            contentPadding: const EdgeInsets.all(24.0),
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Inter',
+                                    fontSize: 15.0,
+                                    letterSpacing: 0.0,
+                                  ),
+                          keyboardType: TextInputType.phone,
+                          validator: _model.phoneNumberTextControllerValidator
+                              .asValidator(context),
                         ),
                       ),
                     ].divide(const SizedBox(height: 24.0)),
@@ -248,11 +312,12 @@ class _SetUsernameWidgetState extends State<SetUsernameWidget> {
                 FFButtonWidget(
                   onPressed: () async {
                     await currentUserReference!.update(createUsersRecordData(
-                      displayName: _model.textController.text,
+                      displayName: _model.userNameTextController.text,
+                      phoneNumber: _model.phoneNumberTextController.text,
                     ));
 
-                    await QuestionnaireRecord.collection.doc().set({
-                      ...createQuestionnaireRecordData(
+                    await PlansRecord.createDoc(currentUserReference!).set({
+                      ...createPlansRecordData(
                         userId: currentUserReference,
                       ),
                       ...mapToFirestore(
